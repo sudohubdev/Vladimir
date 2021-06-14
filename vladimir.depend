@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1623681574 source:/home/clement/Desktop/vladimir/vladimir/types.cpp
+	"types.hpp"
+
+1623677802 source:/home/clement/Desktop/vladimir/vladimir/main.cpp
+	"tick.hpp"
+	"network.hpp"
+
+1623682296 /home/clement/Desktop/vladimir/vladimir/network.hpp
+	<iostream>
+	<netdb.h>
+	<netinet/in.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<sys/types.h>
+	<thread>
+	<unistd.h>
+
+1623681672 source:/home/clement/Desktop/vladimir/vladimir/network.cpp
+	"network.hpp"
+	"types.hpp"
+
+1623681747 source:/home/clement/Desktop/vladimir/vladimir/tick.cpp
+	"tick.hpp"
+
+1623681691 /home/clement/Desktop/vladimir/vladimir/tick.hpp
+	<string>
+	<unistd.h>
+
+1623681430 /home/clement/Desktop/vladimir/vladimir/types.hpp
+	"network.hpp"
+
