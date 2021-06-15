@@ -9,7 +9,7 @@ typedef struct{
 }varint;
 typedef struct{
     varint sz;
-    char data[1024];
+    char data[256];
 }mc_str;
 varint readvarint(int fd);
 void writevarint(varint value,int sockfd) ;

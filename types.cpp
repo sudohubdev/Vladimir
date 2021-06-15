@@ -41,5 +41,5 @@ void getactualvarintsize(varint *v){
 }
 void writemc_str(mc_str in,int sockfd){
     writevarint(in.sz,sockfd);
-    write(sockfd,&in.data,sizeof(in.data));
+    write(sockfd,&in.data,strlen(in.data));
 }

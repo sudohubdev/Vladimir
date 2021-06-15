@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1623722680 source:/home/clement/Desktop/vladimir/vladimir/types.cpp
+1623741402 source:/home/clement/Desktop/vladimir/vladimir/types.cpp
 	"types.hpp"
 
 1623677802 source:/home/clement/Desktop/vladimir/vladimir/main.cpp
@@ -18,7 +18,7 @@
 	<thread>
 	<unistd.h>
 
-1623736507 source:/home/clement/Desktop/vladimir/vladimir/network.cpp
+1623742552 source:/home/clement/Desktop/vladimir/vladimir/network.cpp
 	"network.hpp"
 	"types.hpp"
 
@@ -29,6 +29,6 @@
 	<string>
 	<unistd.h>
 
-1623720976 /home/clement/Desktop/vladimir/vladimir/types.hpp
+1623740830 /home/clement/Desktop/vladimir/vladimir/types.hpp
 	"network.hpp"
 

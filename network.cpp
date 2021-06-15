@@ -1,11 +1,13 @@
 #include "network.hpp"
 #include "types.hpp"
+#define outdatedmsg "\"Server is on 1.16.4 dumbass (Vladimir server)\""
 int state=handshake;
        int sockfd, connfd, len;
 struct packet parse_packet(){
     struct packet retval;
     retval.length=readvarint(connfd);
     retval.id=readvarint(connfd);
+
     switch(state){
         case handshake:
             handshake_pacc hs_p;
@@ -23,13 +25,16 @@ void write_packet(struct packet in){
     switch(in.id.data){
         case 0:
         getactualvarintsize(&in.id);
-        in.login_kick.sz.data=sizeof(in.login_kick.data);
         getactualvarintsize(&in.login_kick.sz);
-        in.length.data=in.id.actualsize+sizeof(in.login_kick.data)+in.login_kick.sz.actualsize+3;
+        in.length.data=0;
+        in.length.data=(in.id.actualsize+sizeof(outdatedmsg)+in.login_kick.sz.actualsize+2);
         writevarint(in.length,connfd);
         writevarint(in.id,connfd);
-        writemc_str(in.login_kick,connfd);
-        while(1);
+        varint t;
+        t.actualsize=0;
+        t.data=sizeof(outdatedmsg);
+        writevarint(t,connfd);
+        write(connfd,outdatedmsg,sizeof(outdatedmsg));
         break;
     }
 }
@@ -38,10 +43,9 @@ void process(){
     if(p.hs_p.protver.data!=754){
         struct packet kick;
         kick.id.data=0;
-        char kickmsg[]="TEST";
-        memcpy(&kick.login_kick.data,&kickmsg,sizeof(kickmsg));
 
         write_packet(kick);
+
         goto terminate;
     }
     while(1);
