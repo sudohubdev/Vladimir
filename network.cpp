@@ -14,14 +14,38 @@ struct packet parse_packet(){
             read(connfd,&hs_p.port,2);
             hs_p.nextstate=readvarint(connfd);
             retval.hs_p=hs_p;
+
         break;
     }
     return retval;
 }
+void write_packet(struct packet in){
+    switch(in.id.data){
+        case 0:
+        getactualvarintsize(&in.id);
+        in.login_kick.sz.data=sizeof(in.login_kick.data);
+        getactualvarintsize(&in.login_kick.sz);
+        in.length.data=in.id.actualsize+sizeof(in.login_kick.data)+in.login_kick.sz.actualsize+3;
+        writevarint(in.length,connfd);
+        writevarint(in.id,connfd);
+        writemc_str(in.login_kick,connfd);
+        while(1);
+        break;
+    }
+}
 void process(){
     struct packet p=parse_packet();
-    if()
+    if(p.hs_p.protver.data!=754){
+        struct packet kick;
+        kick.id.data=0;
+        char kickmsg[]="TEST";
+        memcpy(&kick.login_kick.data,&kickmsg,sizeof(kickmsg));
+
+        write_packet(kick);
+        goto terminate;
+    }
     while(1);
+    terminate:;
 
 }
 void packet_thread(std::string msg){

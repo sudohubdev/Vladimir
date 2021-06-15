@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1623681574 source:/home/clement/Desktop/vladimir/vladimir/types.cpp
+1623722680 source:/home/clement/Desktop/vladimir/vladimir/types.cpp
 	"types.hpp"
 
 1623677802 source:/home/clement/Desktop/vladimir/vladimir/main.cpp
 	"tick.hpp"
 	"network.hpp"
 
-1623682296 /home/clement/Desktop/vladimir/vladimir/network.hpp
+1623720932 /home/clement/Desktop/vladimir/vladimir/network.hpp
 	<iostream>
 	<netdb.h>
 	<netinet/in.h>
@@ -14,10 +14,11 @@
 	<string.h>
 	<sys/socket.h>
 	<sys/types.h>
+	"types.hpp"
 	<thread>
 	<unistd.h>
 
-1623681672 source:/home/clement/Desktop/vladimir/vladimir/network.cpp
+1623736507 source:/home/clement/Desktop/vladimir/vladimir/network.cpp
 	"network.hpp"
 	"types.hpp"
 
@@ -28,6 +29,6 @@
 	<string>
 	<unistd.h>
 
-1623681430 /home/clement/Desktop/vladimir/vladimir/types.hpp
+1623720976 /home/clement/Desktop/vladimir/vladimir/types.hpp
 	"network.hpp"
 
