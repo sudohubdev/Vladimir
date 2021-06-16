@@ -43,3 +43,10 @@ void writemc_str(mc_str in,int sockfd){
     writevarint(in.sz,sockfd);
     write(sockfd,&in.data,strlen(in.data));
 }
+char* readmc_str(int sockfd){
+    varint c;
+    c=readvarint(sockfd);
+    char* n=new char[c.data];
+    read(sockfd,n,c.data);
+    return n;
+}

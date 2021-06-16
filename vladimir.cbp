@@ -15,7 +15,8 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add option="-lpthread" />
+					<Add option="-lpthread -lcrypto" />
+					<Add option="-lssl" />
 				</Linker>
 			</Target>
 			<Target title="Release">

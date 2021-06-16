@@ -10,11 +10,14 @@
 #include "types.hpp"
 #include <thread>
 #include <unistd.h>
+#include <openssl/rsa.h>
+#include <openssl/ssl.h>
+#include <openssl/pem.h>
 #define PORT 25565
 #define SA struct sockaddr
 void packet_thread(std::string);
 enum states{
-    handshake=0,status,login
+    status=1,login
 };
 
 typedef struct {
@@ -25,11 +28,15 @@ typedef struct {
 
 }handshake_pacc;
 
+
+
 struct packet{
     varint length,id;
     union{
         handshake_pacc hs_p;
-        mc_str login_kick;
+        mc_str msg;
+        long pingval;
+
     };
 
 };
