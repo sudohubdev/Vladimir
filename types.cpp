@@ -40,13 +40,16 @@ void getactualvarintsize(varint *v){
     }
 }
 void writemc_str(mc_str in,int sockfd){
+    in.sz.data+=2;
     writevarint(in.sz,sockfd);
     write(sockfd,&in.data,strlen(in.data));
 }
 char* readmc_str(int sockfd){
     varint c;
     c=readvarint(sockfd);
-    char* n=new char[c.data];
+    char* n=new char[c.data+1];
+    memset(n,c.data,0);
     read(sockfd,n,c.data);
+    n[c.data]=0;
     return n;
 }
